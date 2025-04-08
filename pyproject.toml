@@ -1,0 +1,29 @@
+[project]
+name = "sensitive-content-cleaner"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "me",email = "me@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "jsonargparse (>=4.38.0)",
+    "presidio-analyzer (>=2.2.358)",
+    "presidio-anonymizer (>=2.2.358)",
+    "ja-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/ja_core_news_sm-3.8.0/ja_core_news_sm-3.8.0.tar.gz"
+]
+
+[tool.poetry]
+packages = [{include = "sensitive_content_cleaner", from = "src"}]
+
+[tool.poetry.dependencies]
+ja_core_news_sm = {url = "https://github.com/explosion/spacy-models/releases/download/ja_core_news_sm-3.8.0/ja_core_news_sm-3.8.0.tar.gz"}
+
+[tool.poetry.scripts]
+sensitive-content-cleaner = "sensitive_content_cleaner.main:main"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
